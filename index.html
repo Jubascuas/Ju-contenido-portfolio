@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ju.contenido — Diseñadora Multimedial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4E8;
+    --ink:#1C1B1F;
+    --pink:#FF5FAE;
+    --blue:#1EC8F2;
+    --teal:#00BC8C;
+    --purple:#D633E0;
+    --yellow:#FFCD3C;
+    --gray:#6b6478;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Poppins', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  .pop{display:inline-block;transition:transform .25s ease, color .25s ease;}
+  .pop:hover{transform:translateY(-4px) rotate(-2deg);color:var(--pink);}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:2px solid var(--ink);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1180px;margin:0 auto;}
+  .logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;}
+  .logo span{color:var(--pink);}
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:600;}
+  .nav-links a{position:relative;padding-bottom:4px;}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:3px;background:var(--blue);transition:width .25s ease;}
+  .nav-links a:hover::after{width:100%;}
+
+  .marquee-strip{background:var(--ink);color:var(--cream);overflow:hidden;white-space:nowrap;}
+  .marquee-track{display:inline-flex;animation:scroll 20s linear infinite;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;padding:10px 0;}
+  .marquee-track span{padding:0 26px;display:inline-flex;align-items:center;gap:10px;}
+  .marquee-track span:nth-child(odd){color:var(--yellow);}
+  .marquee-track span:nth-child(even){color:var(--pink);}
+  .marquee-track span::before{content:'●';font-size:8px;color:var(--cream);}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion: reduce){.marquee-track{animation:none;}}
+
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:flex-end;
+    background:
+      linear-gradient(180deg, rgba(28,27,31,0.05) 0%, rgba(28,27,31,0.8) 88%),
+      url('assets/hero.jpg');
+    background-size:cover;background-position:center 25%;
+  }
+  .hero-content{padding:60px 0 56px;position:relative;z-index:2;}
+  .hero-content h1{color:var(--cream);font-size:clamp(48px, 8vw, 92px);line-height:0.98;}
+  .hero-content h1 .accent{color:var(--pink);}
+  .hero-content .btn-pill{
+    display:inline-flex;align-items:center;gap:8px;margin-top:26px;border:2px solid var(--blue);
+    color:var(--cream);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(30,200,242,.45);}50%{box-shadow:0 0 0 8px rgba(30,200,242,0);}}
+  .hero-note{
+    position:absolute;top:24px;right:32px;z-index:2;background:var(--yellow);color:var(--ink);
+    font-weight:700;font-size:12px;padding:8px 14px;border-radius:100px;transform:rotate(3deg);
+  }
+
+  .about{padding:80px 0;border-bottom:2px solid var(--ink);display:grid;grid-template-columns:0.7fr 1.5fr;gap:56px;}
+  .about-label{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);font-weight:700;}
+  .about p{font-size:18px;line-height:1.7;max-width:680px;}
+  .about p b{font-weight:800;}
+  .about p .pop{font-weight:800;}
+
+  .folders-section{padding:90px 0 100px;}
+  .folders-head{margin-bottom:48px;}
+  .folders-head h2{font-size:clamp(30px,4.5vw,46px);margin-bottom:10px;}
+  .folders-head p{color:var(--gray);font-size:15px;}
+  .folders-head{text-align:center;}
+  .folders-head p{margin:0 auto;}
+  .folders-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:22px;
+    max-width:980px;margin:0 auto;justify-content:center;
+  }
+  .folder{
+    position:relative;border:none;cursor:pointer;aspect-ratio:1/0.82;
+    border-radius:6px 18px 18px 18px;display:flex;align-items:center;justify-content:center;
+    text-align:center;transition:transform .28s ease, box-shadow .28s ease;
+    box-shadow:0 0 0 0 rgba(0,0,0,0);
+  }
+  .folder::before{
+    content:'';position:absolute;top:-14px;left:14px;width:46%;height:18px;
+    border-radius:8px 8px 0 0;background:inherit;filter:brightness(0.92);
+  }
+  .folder span{
+    color:var(--cream);font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;
+    text-decoration:underline;text-underline-offset:4px;position:relative;z-index:2;padding:0 10px;
+  }
+  .folder small{
+    position:absolute;bottom:14px;left:0;right:0;text-align:center;color:rgba(255,255,255,.85);
+    font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  }
+  .folder:hover{transform:translateY(-10px) rotate(-1.5deg);box-shadow:0 14px 28px rgba(28,27,31,.18);}
+  .f-diseno{background:var(--blue);}
+  .f-contenido{background:var(--pink);}
+  .f-foto{background:var(--teal);}
+  .f-edicion{background:var(--purple);}
+  .f-cortos{background:var(--yellow);}
+  .f-cortos span{color:var(--ink);}
+  .f-cortos small{color:rgba(28,27,31,.65);}
+
+  @media (max-width:980px){.folders-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:620px){.folders-grid{grid-template-columns:repeat(2,1fr);} .about{grid-template-columns:1fr;}}
+
+  .contact{padding:100px 0 70px;border-top:2px solid var(--ink);text-align:center;}
+  .contact .about-label{justify-content:center;display:flex;margin-bottom:18px;}
+  .contact h2{font-size:clamp(40px,9vw,108px);color:var(--pink);line-height:0.95;}
+  .contact-cols{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .contact-col p.label{font-weight:800;color:var(--blue);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+  .contact-col a, .contact-col span.val{font-weight:600;font-size:18px;text-decoration:underline;text-underline-offset:3px;}
+  @media (max-width:700px){.contact-cols{grid-template-columns:1fr;gap:36px;}}
+
+  footer{text-align:center;font-size:12px;color:var(--gray);padding:30px 0;border-top:1px solid rgba(28,27,31,.1);}
+  @media (max-width:760px){.nav-links{display:none;}}
+
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(28,27,31,.7);
+    display:none;align-items:center;justify-content:center;
+    padding:24px;z-index:100;
+  }
+  .modal-overlay.active{display:flex;}
+  .modal-box{
+    background:var(--cream);border-radius:20px;max-width:760px;width:100%;
+    max-height:84vh;overflow-y:auto;position:relative;
+    padding:44px 36px;animation:modalIn .25s ease;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:none;}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:100%;
+    border:2px solid var(--ink);background:var(--cream);font-size:16px;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .modal-close:hover{background:var(--pink);color:var(--cream);border-color:var(--pink);}
+  .modal-tag{
+    display:inline-block;color:var(--cream);font-weight:700;font-size:12px;
+    letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:18px;
+  }
+  .modal-box h3{font-size:30px;margin-bottom:18px;}
+  .modal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .modal-placeholder{
+    aspect-ratio:4/3;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    color:var(--cream);font-weight:700;font-size:13px;text-align:center;padding:10px;
+  }
+  .filter-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;}
+  .filter-pill{
+    border:1.5px solid var(--ink);background:var(--cream);color:var(--ink);
+    padding:7px 16px;border-radius:100px;font-size:13px;font-weight:600;
+    cursor:pointer;transition:all .2s ease;font-family:'Inter',sans-serif;
+  }
+  .filter-pill.active{background:var(--ink);color:var(--cream);}
+  .filter-pill:hover{border-color:var(--pink);}
+
+  .modal-grid img{width:100%;height:100%;object-fit:cover;display:block;}
+  .modal-grid .modal-placeholder{padding:0;overflow:hidden;}
+  .modal-grid figure{margin:0;}
+  .modal-grid figure .thumb{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;}
+  .modal-grid figure .thumb img, .modal-grid figure .thumb video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+  .modal-grid figure:hover .thumb img{transform:scale(1.06);}
+  .modal-grid figcaption{
+    text-align:center;margin-top:10px;font-family:'Poppins',sans-serif;
+    font-weight:700;font-size:15px;color:var(--ink);
+  }
+  .modal-grid figure[hidden]{display:none;}
+  .modal-box p.modal-desc{font-size:15px;line-height:1.6;color:var(--gray);margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Ju.<span>contenido</span></div>
+    <div class="nav-links">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>Diseño</span><span>Contenido</span><span>Fotografías</span><span>Edición de videos</span><span>Cortos</span>
+    <span>Diseño</span><span>Contenido</span><span>Fotografías</span><span>Edición de videos</span><span>Cortos</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-note">disponible para proyectos ✦</div>
+  <div class="wrap hero-content">
+    <h1>Hola, <span class="accent">soy Juli</span></h1>
+    <a class="btn-pill" href="#trabajos">Conoceme y trabajemos juntos</a>
+  </div>
+</header>
+
+<section class="about" id="sobre">
+  <div><div class="about-label">Sobre mí</div></div>
+  <div>
+    <p>¡Hola! Soy <b>Julieta Bascuas</b>, <span class="pop">diseñadora multimedial</span> y <span class="pop">creadora de contenido</span> con más de 5 años de experiencia creando soluciones visuales impactantes y efectivas. Me recibí en la <b>Universidad Nacional de las Artes (UNA)</b> en Artes Multimediales (2022–2025) y hoy sigo formándome estudiando <span class="pop">Cine</span> en la Universidad Nacional de La Plata.</p>
+    <br>
+    <p>Desde 2021 trabajo como <span class="pop">diseñadora freelance</span>, ofreciendo mis servicios a distintas marcas y agencias: fui diseñadora multimedial para la <b>MuseumWeek Argentina 2025</b>, creadora de contenido en <b>Estudio GEMA</b>, y generé contenido para <b>Peñón del Águila</b> y <b>Patagonia</b> junto a Estudio Calipso, además de mi rol como diseñadora en <b>FarmaPlus (ROOTS)</b>, entre otros proyectos.</p>
+    <br>
+    <p>Mi trayectoria abarca <span class="pop">diseño</span> de publicaciones y medios digitales, puestas en escena como <span class="pop">mapping</span>, <span class="pop">fotografía</span>, <span class="pop">edición de video</span> y <span class="pop">contenido</span> para redes — todo con Photoshop, Illustrator, Premiere, After Effects, Reaper, CapCut y Canva como herramientas de cabecera. Como digo siempre: <i>"mostrá siempre tu trabajo, nunca sabés quién está viendo".</i></p>
+  </div>
+</section>
+
+<section class="folders-section" id="trabajos">
+  <div class="wrap">
+    <div class="folders-head">
+      <h2>Mis trabajos</h2>
+      <p>Hacé click en una carpeta para ver los proyectos.</p>
+    </div>
+    <div class="folders-grid">
+      <button class="folder f-diseno" onclick="openFolder('diseno')"><span>diseño</span></button>
+      <button class="folder f-contenido" onclick="openFolder('contenido')"><span>contenido</span></button>
+      <button class="folder f-foto" onclick="openFolder('foto')"><span>fotografías</span></button>
+      <button class="folder f-edicion" onclick="openFolder('edicion')"><span>edición<br>de videos</span></button>
+      <button class="folder f-cortos" onclick="openFolder('cortos')"><span>cortos</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="about-label">¿Trabajamos juntas?</div>
+    <h2>TRABAJEMOS<br>JUNTOS</h2>
+    <div class="contact-cols">
+      <div class="contact-col">
+        <p class="label">Instagram</p>
+        <a href="https://instagram.com/ju.contenido" target="_blank">@ju.contenido</a>
+      </div>
+      <div class="contact-col">
+        <p class="label">Correo</p>
+        <a href="mailto:juucontenido@gmail.com">juucontenido@gmail.com</a>
+      </div>
+      <div class="contact-col">
+        <p class="label">Portfolio</p>
+        <a href="#">Behance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Ju.contenido — Diseño, foto y video con identidad propia.</footer>
+
+<!-- MODALES -->
+<div class="modal-overlay" id="modal-diseno">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFolder('diseno')">✕</button>
+    <span class="modal-tag" style="background:var(--blue)">Diseño</span>
+    <h3>Diseño</h3>
+    <p class="modal-desc">Piezas de diseño publicitario para distintas marcas.</p>
+    <div class="filter-pills" id="filters-diseno">
+      <button class="filter-pill active" onclick="filterModal('diseno','all',this)">Todos</button>
+      <button class="filter-pill" onclick="filterModal('diseno','rainbow',this)">Rainbow</button>
+    </div>
+    <div class="modal-grid">
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/01-pelotero-jungla.png" alt="Pelotero — jungla"></div><figcaption>Pelotero — jungla</figcaption></figure>
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/02-pelotero-selva.png" alt="Pelotero — selva"></div><figcaption>Pelotero — selva</figcaption></figure>
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/03-monopatin-wind.png" alt="Monopatín Wind"></div><figcaption>Monopatín Wind</figcaption></figure>
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/04-monopatin-colores.png" alt="Monopatín Wind — colores"></div><figcaption>Monopatín Wind — colores</figcaption></figure>
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/05-monopatin-rash.png" alt="Monopatín Rash"></div><figcaption>Monopatín Rash</figcaption></figure>
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/06-monopatin-pintura-agua.png" alt="Monopatín Rash — colores"></div><figcaption>Monopatín Rash — colores</figcaption></figure>
+      <figure data-brand="rainbow"><div class="thumb"><img src="assets/diseno/07-casa-fantastic.png" alt="Casa Fantastic Plegable"></div><figcaption>Casa Fantastic Plegable</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-contenido">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFolder('contenido')">✕</button>
+    <span class="modal-tag" style="background:var(--pink)">Contenido</span>
+    <h3>Contenido</h3>
+    <p class="modal-desc">Creación de contenido para marcas y agencias.</p>
+    <div class="modal-grid">
+      <div class="modal-placeholder" style="background:var(--pink)">MuseumWeek 2025</div>
+      <div class="modal-placeholder" style="background:var(--pink)">Estudio GEMA</div>
+      <div class="modal-placeholder" style="background:var(--pink)">Peñón del Águila</div>
+      <div class="modal-placeholder" style="background:var(--pink)">Patagonia</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-foto">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFolder('foto')">✕</button>
+    <span class="modal-tag" style="background:var(--teal)">Fotografías</span>
+    <h3>Fotografías</h3>
+    <p class="modal-desc">Retratos, producto y editorial.</p>
+    <div class="modal-grid">
+      <div class="modal-placeholder" style="background:var(--teal)">Foto 1</div>
+      <div class="modal-placeholder" style="background:var(--teal)">Foto 2</div>
+      <div class="modal-placeholder" style="background:var(--teal)">Foto 3</div>
+      <div class="modal-placeholder" style="background:var(--teal)">Foto 4</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-edicion">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFolder('edicion')">✕</button>
+    <span class="modal-tag" style="background:var(--purple)">Edición de videos</span>
+    <h3>Edición de videos</h3>
+    <p class="modal-desc">Trabajos de edición y postproducción con Premiere y After Effects.</p>
+    <div class="filter-pills" id="filters-edicion">
+      <button class="filter-pill active" onclick="filterModal('edicion','all',this)">Todos</button>
+      <button class="filter-pill" onclick="filterModal('edicion','buongiorno',this)">Buongiorno Propiedades</button>
+      <button class="filter-pill" onclick="filterModal('edicion','chicos',this)">Chicos Uniformes</button>
+      <button class="filter-pill" onclick="filterModal('edicion','fenix',this)">Fénix</button>
+      <button class="filter-pill" onclick="filterModal('edicion','cuarto',this)">Cuarto Urbano</button>
+    </div>
+    <div class="modal-grid">
+      <figure data-brand="buongiorno"><div class="thumb"><video controls preload="none" poster="assets/edicion/poster-buongiorno.jpg"><source src="assets/edicion/buongiorno-propiedades.mp4" type="video/mp4"></video></div><figcaption>Buongiorno Propiedades</figcaption></figure>
+      <figure data-brand="chicos"><div class="thumb"><video controls preload="none" poster="assets/edicion/poster-chicos.jpg"><source src="assets/edicion/chicos-uniformes.mp4" type="video/mp4"></video></div><figcaption>Chicos Uniformes</figcaption></figure>
+      <figure data-brand="fenix"><div class="thumb"><video controls preload="none" poster="assets/edicion/poster-fenix.jpg"><source src="assets/edicion/fenix.mp4" type="video/mp4"></video></div><figcaption>Fénix</figcaption></figure>
+      <figure data-brand="cuarto"><div class="thumb"><video controls preload="none" poster="assets/edicion/poster-cuarto-urbano.jpg"><source src="assets/edicion/cuarto-urbano.mp4" type="video/mp4"></video></div><figcaption>Cuarto Urbano</figcaption></figure>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cortos">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFolder('cortos')">✕</button>
+    <span class="modal-tag" style="background:var(--yellow);color:var(--ink)">Cortos</span>
+    <h3>Cortos</h3>
+    <p class="modal-desc">Piezas audiovisuales cortas y proyectos personales de cine.</p>
+    <div class="modal-grid">
+      <div class="modal-placeholder" style="background:var(--yellow);color:var(--ink)">Corto 1</div>
+      <div class="modal-placeholder" style="background:var(--yellow);color:var(--ink)">Corto 2</div>
+      <div class="modal-placeholder" style="background:var(--yellow);color:var(--ink)">Corto 3</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function filterModal(folderId, brand, btn){
+    var modal = document.getElementById('modal-' + folderId);
+    var figures = modal.querySelectorAll('.modal-grid figure');
+    figures.forEach(function(fig){
+      if(brand === 'all' || fig.getAttribute('data-brand') === brand){
+        fig.hidden = false;
+      } else {
+        fig.hidden = true;
+      }
+    });
+    var pills = btn.parentElement.querySelectorAll('.filter-pill');
+    pills.forEach(function(p){ p.classList.remove('active'); });
+    btn.classList.add('active');
+  }
+  function openFolder(id){
+    document.getElementById('modal-' + id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFolder(id){
+    document.getElementById('modal-' + id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay){
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.modal-overlay.active').forEach(function(o){
+        o.classList.remove('active');
+      });
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
+</body>
+</html>
