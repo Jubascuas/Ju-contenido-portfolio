@@ -61,23 +61,27 @@
       url('assets/hero.jpg');
     background-size:cover;background-position:center 25%;
   }
-  .hero-content{padding:60px 0 56px;position:relative;z-index:2;}
+  .hero-content{padding:60px 0 56px;position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;}
   .hero-content h1{color:var(--cream);font-size:clamp(48px, 8vw, 92px);line-height:0.98;}
   .hero-content h1 .accent{color:var(--pink);}
   .hero-content .btn-pill{
-    display:inline-flex;align-items:center;gap:8px;margin-top:26px;border:2px solid var(--blue);
-    color:var(--cream);padding:12px 22px;border-radius:100px;font-weight:600;font-size:14px;
-    animation:pulse 2.4s ease-in-out infinite;
+    display:inline-flex;align-items:center;gap:8px;margin-top:32px;border:3px solid var(--blue);
+    color:var(--cream);padding:14px 28px;border-radius:100px;font-weight:700;font-size:15px;
+    background:rgba(30,200,242,0.15);
+    animation:pulse 1.8s ease-in-out infinite;
   }
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(30,200,242,.45);}50%{box-shadow:0 0 0 8px rgba(30,200,242,0);}}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(30,200,242,.7), 0 0 12px rgba(30,200,242,.3);}
+    50%{box-shadow:0 0 0 14px rgba(30,200,242,0), 0 0 24px rgba(30,200,242,.15);}
+  }
   .hero-note{
     position:absolute;top:24px;right:32px;z-index:2;background:var(--yellow);color:var(--ink);
     font-weight:700;font-size:12px;padding:8px 14px;border-radius:100px;transform:rotate(3deg);
   }
 
-  .about{padding:80px 0;border-bottom:2px solid var(--ink);display:grid;grid-template-columns:0.7fr 1.5fr;gap:56px;}
+  .about{padding:80px 0;border-bottom:2px solid var(--ink);display:grid;grid-template-columns:0.7fr 1.5fr;gap:56px;padding-left:48px;padding-right:48px;}
   .about-label{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);font-weight:700;}
-  .about p{font-size:18px;line-height:1.7;max-width:680px;}
+  .about p{font-size:18px;line-height:1.7;max-width:680px;padding-left:8px;}
   .about p b{font-weight:800;}
   .about p .pop{font-weight:800;}
 
@@ -115,8 +119,8 @@
   .f-foto{background:var(--teal);}
   .f-edicion{background:var(--purple);}
   .f-cortos{background:var(--yellow);}
-  .f-cortos span{color:var(--ink);}
-  .f-cortos small{color:rgba(28,27,31,.65);}
+  .f-cortos span{color:#fff;text-shadow:0 1px 4px rgba(80,60,0,0.35);}
+  .f-cortos small{color:rgba(255,255,255,.8);}
 
   @media (max-width:980px){.folders-grid{grid-template-columns:repeat(3,1fr);}}
   @media (max-width:620px){.folders-grid{grid-template-columns:repeat(2,1fr);} .about{grid-template-columns:1fr;}}
@@ -240,7 +244,6 @@
 
 <section class="contact" id="contacto">
   <div class="wrap">
-    <div class="about-label">¿Trabajamos juntas?</div>
     <h2>TRABAJEMOS<br>JUNTOS</h2>
     <div class="contact-cols">
       <div class="contact-col">
