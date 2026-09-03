@@ -121,6 +121,8 @@
   .f-cortos{background:var(--yellow);}
   .f-cortos span{color:#fff;text-shadow:0 1px 4px rgba(80,60,0,0.35);}
   .f-cortos small{color:rgba(255,255,255,.8);}
+  .f-ugc{background:#FF6B35;}
+  .f-ugc span{color:#fff;}
 
   @media (max-width:980px){.folders-grid{grid-template-columns:repeat(3,1fr);}}
   @media (max-width:620px){.folders-grid{grid-template-columns:repeat(2,1fr);} .about{grid-template-columns:1fr;}}
@@ -238,6 +240,7 @@
       <button class="folder f-foto" onclick="openFolder('foto')"><span>fotografías</span></button>
       <button class="folder f-edicion" onclick="openFolder('edicion')"><span>edición<br>de videos</span></button>
       <button class="folder f-cortos" onclick="openFolder('cortos')"><span>cortos</span></button>
+      <button class="folder f-ugc" onclick="openFolder('ugc')"><span>UGC</span></button>
     </div>
   </div>
 </section>
@@ -388,6 +391,18 @@
           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/f38iKU-SmlM" title="Corto 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;"></iframe>
         </div>
       </figure>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ugc">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeFolder('ugc')">✕</button>
+    <span class="modal-tag" style="background:#FF6B35">UGC</span>
+    <h3>UGC</h3>
+    <p class="modal-desc">Contenido generado para marcas como creadora.</p>
+    <div class="modal-grid">
+      <div class="modal-placeholder" style="background:#FF6B35">Próximamente</div>
     </div>
   </div>
 </div>
